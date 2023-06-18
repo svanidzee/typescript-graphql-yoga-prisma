@@ -1,14 +1,13 @@
-// prisma/seed.ts
-
 import { PrismaClient } from '@prisma/client';
+
 const prisma = new PrismaClient();
 
 async function main() {
-  // Delete all `User` and `Message` records
+  // delete all User and Message records if exists
   await prisma.message.deleteMany({});
   await prisma.user.deleteMany({});
 
-  // (Re-)Create dummy `User` and `Message` records
+  // recreate reate User and Message records
   await prisma.user.create({
     data: {
       name: 'Jack',
@@ -57,5 +56,5 @@ async function main() {
 }
 
 main().then(() => {
-  console.log('Data seeded...');
+  console.log('seed data');
 });
